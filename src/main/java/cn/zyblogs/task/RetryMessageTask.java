@@ -39,6 +39,7 @@ public class RetryMessageTask {
         List<BrokerMessageLog> pos = this.brokerMessageLogMapper.listSendFailureAndTimeoutMessage();
 
         System.out.println(">>>>>>>" + pos.size());
+        System.out.println(pos.toString());
 
         for (BrokerMessageLog po : pos) {
             log.info("--------处理消息日志：{}--------",po);
@@ -47,10 +48,12 @@ public class RetryMessageTask {
                 BrokerMessageLog messageLog = new BrokerMessageLog();
                 messageLog.setMessageId(po.getMessageId());
                 messageLog.setStatus(Constants.OrderSendStatus.SEND_FAILURE);
-                this.brokerMessageLogMapper.changeBrokerMessageLogStatus(messageLog);
+                //   根据主键更新全部字段  值不能为null updateByPrimaryKey
+                //   根据主键更新部分字段      updateByPrimaryKeySelective
+                this.brokerMessageLogMapper.updateByPrimaryKeySelective(messageLog);
             } else {
                 // 进行重试，重试次数+1
-                this.brokerMessageLogMapper.updateRetryCount(po);
+                this.brokerMessageLogMapper.updateRetryCount(po.getMessageId());
                 Order reSendOrder = FastJsonConvertUtils.convertJsonToObject(po.getMessage(), Order.class);
                 try {
                     this.orderSender.send(reSendOrder);

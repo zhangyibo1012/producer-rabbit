@@ -38,7 +38,7 @@ public class OrderSender {
                 BrokerMessageLog messageLog = new BrokerMessageLog();
                 messageLog.setMessageId(messageId);
                 messageLog.setStatus(Constants.OrderSendStatus.SEND_SUCCESS);
-                brokerMessageLogMapper.changeBrokerMessageLogStatus(messageLog);
+                brokerMessageLogMapper.updateByPrimaryKeySelective(messageLog);
             } else {
                 // 失败则进行具体的后续操作：重试或者补偿等
                 System.out.println("异常处理...");
@@ -66,6 +66,6 @@ public class OrderSender {
         // 消息ID
         CorrelationData correlationData = new CorrelationData(order.getMessageId());
         // 发送消息
-        this.rabbitTemplate.convertAndSend("order-exchange11", "order.a", order, correlationData);
+        this.rabbitTemplate.convertAndSend("order-exchange", "order.a", order, correlationData);
     }
 }

@@ -1,53 +1,35 @@
 package cn.zyblogs.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
-/**
- * @Title: BrokerMessageLog.java
- * @Package cn.zyblogs.entity
- * @Description: TODO
- * @Author ZhangYB
- * @Version V1.0
- */
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "broker_message_log")
-public class BrokerMessageLog implements Serializable {
-
-    /**
-     * 消息ID
-     */
+public class BrokerMessageLog {
+    @Id
+    @Column(name = "message_id")
     private String messageId;
-    /**
-     * 消息内容
-     */
+
     private String message;
-    /**
-     * '重试次数'
-     */
+
+    @Column(name = "try_count")
     private Integer tryCount;
-    /**
-     * 投递状态 {@code com.myimooc.rabbitmq.ha.constant.Constants.OrderSendStatus}
-     */
+
     private String status;
-    /**
-     * 下次重试时间
-     */
+
+    @Column(name = "next_retry")
     private Date nextRetry;
-    /**
-     * 创建时间
-     */
+
+    @Column(name = "create_time")
     private Date createTime;
-    /**
-     * 更新时间
-     */
+
+    @Column(name = "update_time")
     private Date updateTime;
+
 }
