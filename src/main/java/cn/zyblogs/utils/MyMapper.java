@@ -10,5 +10,5 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @Author ZhangYB
  * @Version V1.0
  */
-public interface  MyMapper<T> extends Mapper<T>, MySqlMapper<T> {
+public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {
 }

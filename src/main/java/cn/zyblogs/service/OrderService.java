@@ -26,7 +26,7 @@ public class OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-    @Autowired(required=true)
+    @Autowired(required = true)
     private BrokerMessageLogMapper brokerMessageLogMapper;
 
     @Autowired
@@ -37,7 +37,7 @@ public class OrderService {
      *
      * @param order 订单
      */
-    public void  create(Order order){
+    public void create(Order order) {
         // 当前时间
         Date orderTime = new Date();
         // 业务数据入库
@@ -53,8 +53,6 @@ public class OrderService {
         // 发送消息
         this.orderSender.send(order);
     }
-
-
 
 
 }

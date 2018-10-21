@@ -55,6 +55,7 @@ public class OrderSender {
 //
 //            rabbitTemplate.convertAndSend("order-exchange", "order.abcd", order, correlationData);
 //        }
+
     /**
      * 发送订单
      *

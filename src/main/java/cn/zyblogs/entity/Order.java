@@ -27,7 +27,7 @@ public class Order implements Serializable {
     private String name;
 
     /**
-     *  存储消息发送的唯一标识
+     * 存储消息发送的唯一标识
      */
     @Column(name = "message_id")
     private String messageId;

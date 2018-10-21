@@ -29,7 +29,7 @@ public class ProducerRabbitApplicationTests {
     private Sid sid;
 
     @Test
-    public void testCreateOrder() throws Exception{
+    public void testCreateOrder() throws Exception {
         Order order = new Order();
         order.setId(sid.nextShort());
         order.setName("测试创建订单");
@@ -38,7 +38,7 @@ public class ProducerRabbitApplicationTests {
     }
 
     @Test
-    public void testSend1() throws Exception{
+    public void testSend1() throws Exception {
         Order order = new Order();
         order.setId("20180818000000001");
         order.setName("测试订单1");

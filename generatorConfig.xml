@@ -21,15 +21,15 @@
         <!-- 对于生成的pojo所在包 -->
         <javaModelGenerator targetPackage="cn.zyblogs.entity" targetProject="src/main/java"/>
 
-		<!-- 对于生成的mapper所在目录 可以不要-->
+        <!-- 对于生成的mapper所在目录 可以不要-->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-		<!-- 配置mapper对应的java映射 -->
+        <!-- 配置mapper对应的java映射 -->
         <javaClientGenerator targetPackage="cn.zyblogs.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
 
-		<table tableName="broker_message_log"></table>
-		 
+        <table tableName="broker_message_log"></table>
+
     </context>
 </generatorConfiguration>
