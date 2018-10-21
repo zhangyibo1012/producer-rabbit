@@ -42,7 +42,7 @@ public class RetryMessageTask {
         System.out.println(pos.toString());
 
         for (BrokerMessageLog po : pos) {
-            log.info("--------处理消息日志：{}--------",po);
+            log.info("--------处理消息日志：{}--------", po);
             if (po.getTryCount() >= Constants.MAX_RETRY_COUNT) {
                 // 更新状态为失败
                 BrokerMessageLog messageLog = new BrokerMessageLog();
